@@ -21,8 +21,12 @@
   font-size: 32px;
   color: var(--secondary);
   font-family: inherit;
+  /* border: 1px solid; */
 }
-
+.logo img {
+  width: 50px;
+  display: inline;
+}
 .sidebar {
   position: fixed;
   margin-top: 5px;
@@ -75,4 +79,16 @@
 .sidebar .icon {
   font-size: 25px;
   display: block;
+}
+
+@media (max-width: 769px) {
+  .sidebar {
+    width: 70%;
+  }
+}
+
+@media (max-width: 468px) {
+  .sidebar {
+    width: 100%;
+  }
 }
