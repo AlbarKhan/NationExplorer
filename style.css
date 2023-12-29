@@ -1,0 +1,78 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --primary: #0583d2;
+  --secondary: white;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: var(--primary);
+  padding: 10px;
+}
+
+.topnav .logo {
+  display: inline;
+  font-size: 32px;
+  color: var(--secondary);
+  font-family: inherit;
+}
+
+.sidebar {
+  position: fixed;
+  margin-top: 5px;
+  background-color: var(--primary);
+  border: 1px solid;
+  height: 100vh;
+  width: 50%;
+  top: -10px;
+  right: -1000px;
+  transition: 1.7s;
+}
+.sidebar.open {
+  right: 0px;
+}
+.sidebar .close-btn {
+  opacity: 0;
+  position: fixed;
+  font-size: 25px;
+  top: 2px;
+  right: 7px;
+  transition: 1.5s;
+}
+
+.sidebar .close-btn a {
+  border: none;
+}
+
+.sidebarOpen-btn {
+  float: right;
+}
+.sidebarOpen-btn a {
+  color: var(--secondary);
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.sidebar .menu {
+  position: relative;
+  margin-top: 10%;
+  margin-left: 5%;
+}
+.sidebar a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 19px;
+  padding: 14px 16px;
+  display: block;
+  border-bottom: 1px solid;
+}
+.sidebar .icon {
+  font-size: 25px;
+  display: block;
+}
