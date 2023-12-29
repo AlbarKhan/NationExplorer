@@ -19,6 +19,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
   </head>
   <body>
     <header>
@@ -53,38 +54,27 @@
         </div>
       </div>
     </header>
-    <div class="country-image"></div>
+    <section class="hero">
+      <div class="main-hero">
+        <div class="heading">
+          <h1>Discover the World's Wonders</h1>
+          <p>
+            Welcome to our global journey! Explore the vibrant tapestry of
+            cultures, traditions, and landscapes that adorn our planet. From
+            bustling cities to serene landscapes, discover fascinating facts
+            about every corner of the world.
+          </p>
+        </div>
+        <div class="main-image">
+          <img
+            src="https://usagif.com/wp-content/uploads/gifs/globe-9.gif"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
+    <section></section>
     <script>
-      // function toggleSidebar(e) {
-      //   event.preventDefault();
-      //   const sidebar = document.querySelector(".sidebar");
-      //   sidebar.classList.toggle("open");
-      // }
-
-      // function myFunction(e) {
-      //   e.preventDefault();
-      //   const sidebar = document.querySelector(".sidebar");
-      //   const closeBtn = document.querySelector(".close-btn");
-      //   if (sidebar.className == "sidebar") {
-      //     sidebar.className += " open";
-      //     closeBtn.style.opacity = 1;
-      //   } else {
-      //     sidebar.className = "sidebar";
-      //     closeBtn.style.opacity = 0;
-      //   }
-      // }
-      // function myFunction(e) {
-      //   e.preventDefault();
-      //   const sidebar = document.querySelector(".sidebar");
-      //   const closeBtn = document.querySelector(".close-btn");
-      //   if (sidebar.classList.contains("open")) {
-      //     sidebar.classList.remove("open");
-      //     closeBtn.style.opacity = 0;
-      //   } else {
-      //     sidebar.classList.add("open");
-      //     closeBtn.style.opacity = 1;
-      //   }
-      // }
       function toggleSidebar(e) {
         e.preventDefault();
         const sidebar = document.querySelector(".sidebar");
