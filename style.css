@@ -112,4 +112,21 @@ header {
   justify-content: center;
   gap: 60px;
 }
+
+.card {
+  border: 1px solid var(--primary);
+}
+.card h3 {
+  font-size: 29px;
+  border-bottom: 1px solid var(--primary);
+}
+.card p {
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.card img {
+  width: 100%;
+  height: 280px;
+}
 /* HERO END */
