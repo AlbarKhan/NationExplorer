@@ -115,6 +115,7 @@ header {
 
 .card {
   border: 1px solid var(--primary);
+  height: 650px;
 }
 .card h3 {
   font-size: 29px;

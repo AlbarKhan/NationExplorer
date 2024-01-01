@@ -6,6 +6,8 @@ const asia = document.getElementById("Asia");
 const europe = document.getElementById("Europe");
 const africa = document.getElementById("Africa");
 const northAmerica = document.getElementById("NorthAmerica");
+const southAmerica = document.getElementById("SouthAmerica");
+const all = document.getElementById("all");
 
 fetch("https://restcountries.com/v3.1/all")
   .then((response) => response.json())
@@ -65,7 +67,9 @@ fetch("https://restcountries.com/v3.1/all")
     const northAmericaContinent = data.filter(
       (country) => country.continents == "North America"
     );
-    console.log(northAmericaContinent);
+    const southAmericaContinent = data.filter(
+      (country) => country.continents == "South America"
+    );
     // console.log(sortedPopulation.splice(-10));
     // const topTen = data.sort((a, b) => b.population - a.population);
     // console.log(topTen.slice(0, 10));
@@ -84,6 +88,12 @@ fetch("https://restcountries.com/v3.1/all")
     });
     northAmerica.addEventListener("click", function (e) {
       displayData(...countriesDetails(northAmericaContinent));
+    });
+    southAmerica.addEventListener("click", function (e) {
+      displayData(...countriesDetails(southAmericaContinent));
+    });
+    all.addEventListener("click", function (e) {
+      displayData(...countriesDetails(data));
     });
     displayData(...countriesDetails(data));
   })
