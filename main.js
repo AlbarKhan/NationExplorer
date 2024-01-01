@@ -10,25 +10,39 @@ fetch("https://restcountries.com/v3.1/all")
 
     // Use the data to update your website content
     // For example, display country names:
+
     const countriesName = data.map((country) => country.name.common);
     const countryCapital = data.map((country) => country.capital);
     const countriesFlag = data.map((country) => country.flags.png);
     const countriesLanguage = data.map((country) => country.languages);
     const countriespopulation = data.map((country) => country.population);
     const countriesSubRegion = data.map((country) => country.subregion);
-    // countryData.name = countriesName;
-    // countryData.capital = countryCapital;
-    // countryData.flags = countriesFlag;
-    // countryData.console.log(countryData.flags);
-    console.log(countriesLanguage);
-    displayData(
-      countriesName,
+    countryData.currency = data.map((country) => country.currencies);
+    const countriesLocation = data.map((country) => country.maps.googleMaps);
+
+    // console.log(countriespopulation);
+    function getCountriesName(data) {
+      return data.map((country) => country.name.common);
+    }
+    const asiaContinent = data.filter(
+      (country) => country.continents == "Asia"
+    );
+    console.log(getCountriesName(asiaContinent));
+    // console.log(topten);
+    // console.log(sortedPopulation.splice(-10));
+    const topTen = data.sort((a, b) => b.population - a.population);
+    console.log(topTen.slice(0, 10));
+    const para = [
+      getCountriesName(data),
       countryCapital,
       countriesFlag,
       countriesLanguage,
       countriespopulation,
-      countriesSubRegion
-    );
+      countriesSubRegion,
+      countryData.currency,
+      countriesLocation,
+    ];
+    displayData(...para);
   })
   .catch((error) => {
     // Handle any errors during the API request
@@ -41,7 +55,9 @@ function displayData(
   countryflag,
   countriesLanguage,
   countriespopulation,
-  countriesubregion
+  countriesubregion,
+  countryCurrency,
+  countriesLocation
 ) {
   countries.innerHTML = "";
 
@@ -50,7 +66,12 @@ function displayData(
       ? Object.values(countriesLanguage[index]).join(",")
       : "";
     // console.log(language);
+    const currencyy = countryCurrency[index]
+      ? Object.values(countryCurrency[index])
+      : "";
+    // Object.values(countryCurrency[index]);
 
+    const currencyCheck = currencyy[0] ? currencyy[0].name : "";
     const country = document.createElement("div");
     country.className = "col-lg-4 col-md-6";
     country.innerHTML = `
@@ -66,9 +87,9 @@ function displayData(
                   <p class="language">LANGUAGE&nbsp;:&nbsp;${language}</p>
                   <p class="population">POPULATION&nbsp;:&nbsp;${countriespopulation[index]}</p>
                   <p class="subregion">SUB-REGION&nbsp;:&nbsp; ${countriesubregion[index]}</p>
-                  <p class="currency">CURRENCY&nbsp;:&nbsp; RUPEES</p>
+                  <p class="currency">CURRENCY&nbsp;:&nbsp; ${currencyCheck}</p>
                   <button class="btn btn-primary">
-                    <a href="#" class="text-light text-decoration-none"
+                    <a href="${countriesLocation[index]}" class="text-light text-decoration-none" target="_blank"
                       >Location</a
                     >
                   </button>
@@ -79,3 +100,6 @@ function displayData(
     countries.appendChild(country);
   });
 }
+
+const topTenbtn = document.getElementById("top-10");
+function topTenPopulated() {}
