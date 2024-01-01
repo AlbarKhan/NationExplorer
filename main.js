@@ -1,7 +1,10 @@
 "use strict";
 // Example using the Fetch API
-const countryData = {};
+
 const countries = document.querySelector(".countries");
+const asia = document.getElementById("Asia");
+const europe = document.getElementById("Europe");
+
 fetch("https://restcountries.com/v3.1/all")
   .then((response) => response.json())
   .then((data) => {
@@ -11,38 +14,64 @@ fetch("https://restcountries.com/v3.1/all")
     // Use the data to update your website content
     // For example, display country names:
 
-    const countriesName = data.map((country) => country.name.common);
-    const countryCapital = data.map((country) => country.capital);
-    const countriesFlag = data.map((country) => country.flags.png);
-    const countriesLanguage = data.map((country) => country.languages);
-    const countriespopulation = data.map((country) => country.population);
-    const countriesSubRegion = data.map((country) => country.subregion);
-    countryData.currency = data.map((country) => country.currencies);
-    const countriesLocation = data.map((country) => country.maps.googleMaps);
-
-    // console.log(countriespopulation);
     function getCountriesName(data) {
       return data.map((country) => country.name.common);
+    }
+    function getCountriesCapital(data) {
+      return data.map((country) => country.capital);
+    }
+    function getCountriesFlag(data) {
+      return data.map((country) => country.flags.png);
+    }
+    function getCountriesLanguage(data) {
+      return data.map((country) => country.languages);
+    }
+    function getCountriesPopulation(data) {
+      return data.map((country) => country.population);
+    }
+    function getCountriesSubRegion(data) {
+      return data.map((country) => country.subregion);
+    }
+    function getCountriescurrency(data) {
+      return data.map((country) => country.currencies);
+    }
+    function getCountriesLocation(data) {
+      return data.map((country) => country.maps.googleMaps);
+    }
+
+    function countriesDetails(data) {
+      return [
+        getCountriesName(data),
+        getCountriesCapital(data),
+        getCountriesFlag(data),
+        getCountriesLanguage(data),
+        getCountriesPopulation(data),
+        getCountriesSubRegion(data),
+        getCountriescurrency(data),
+        getCountriesLocation(data),
+      ];
     }
     const asiaContinent = data.filter(
       (country) => country.continents == "Asia"
     );
-    console.log(getCountriesName(asiaContinent));
-    // console.log(topten);
+    const europeContient = data.filter(
+      (country) => country.continents == "Europe"
+    );
+    console.log(europeContient);
     // console.log(sortedPopulation.splice(-10));
-    const topTen = data.sort((a, b) => b.population - a.population);
-    console.log(topTen.slice(0, 10));
-    const para = [
-      getCountriesName(data),
-      countryCapital,
-      countriesFlag,
-      countriesLanguage,
-      countriespopulation,
-      countriesSubRegion,
-      countryData.currency,
-      countriesLocation,
-    ];
-    displayData(...para);
+    // const topTen = data.sort((a, b) => b.population - a.population);
+    // console.log(topTen.slice(0, 10));
+    // console.log(...getCountriesSubRegion(data));
+
+    asia.addEventListener("click", function () {
+      displayData(...countriesDetails(asiaContinent));
+    });
+
+    europe.addEventListener("click", function (e) {
+      displayData(...countriesDetails(europeContient));
+    });
+
+    displayData(...countriesDetails(data));
   })
   .catch((error) => {
     // Handle any errors during the API request
@@ -101,5 +130,7 @@ function displayData(
   });
 }
 
-const topTenbtn = document.getElementById("top-10");
-function topTenPopulated() {}
+// const asia = document.getElementById("Asia");
+// asia.addEventListener("click", function () {
+//   console.log("click");
+// });
