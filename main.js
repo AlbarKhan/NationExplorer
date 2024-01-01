@@ -4,6 +4,8 @@
 const countries = document.querySelector(".countries");
 const asia = document.getElementById("Asia");
 const europe = document.getElementById("Europe");
+const africa = document.getElementById("Africa");
+const northAmerica = document.getElementById("NorthAmerica");
 
 fetch("https://restcountries.com/v3.1/all")
   .then((response) => response.json())
@@ -54,10 +56,16 @@ fetch("https://restcountries.com/v3.1/all")
     const asiaContinent = data.filter(
       (country) => country.continents == "Asia"
     );
-    const europeContient = data.filter(
+    const europeContinent = data.filter(
       (country) => country.continents == "Europe"
     );
-    console.log(europeContient);
+    const africaContinent = data.filter(
+      (country) => country.continents == "Africa"
+    );
+    const northAmericaContinent = data.filter(
+      (country) => country.continents == "North America"
+    );
+    console.log(northAmericaContinent);
     // console.log(sortedPopulation.splice(-10));
     // const topTen = data.sort((a, b) => b.population - a.population);
     // console.log(topTen.slice(0, 10));
@@ -68,9 +76,15 @@ fetch("https://restcountries.com/v3.1/all")
     });
 
     europe.addEventListener("click", function (e) {
-      displayData(...countriesDetails(europeContient));
+      displayData(...countriesDetails(europeContinent));
     });
 
+    africa.addEventListener("click", function (e) {
+      displayData(...countriesDetails(africaContinent));
+    });
+    northAmerica.addEventListener("click", function (e) {
+      displayData(...countriesDetails(northAmericaContinent));
+    });
     displayData(...countriesDetails(data));
   })
   .catch((error) => {
